@@ -1,4 +1,4 @@
-# Hệ thống Quản trị Kinh doanh (QTKD) — Phase 2
+# PHASE 2 — XÂY DỰNG HỆ THỐNG QTKD
 
 - **GitHub Repository**: [https://github.com/kilabeobeo72/QTKD](https://github.com/kilabeobeo72/QTKD)
 - **Sinh viên thực hiện**: Đào Trung Kiên
