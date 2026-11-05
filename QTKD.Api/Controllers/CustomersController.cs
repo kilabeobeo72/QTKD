@@ -22,4 +22,36 @@ public class CustomersController : ControllerBase
         var customers = await _customerService.GetAllCustomersAsync(cancellationToken);
         return Ok(customers);
     }
+
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(typeof(CustomerDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<CustomerDto>> GetCustomerById(int id, CancellationToken cancellationToken)
+    {
+        var customer = await _customerService.GetCustomerByIdAsync(id, cancellationToken);
+        if (customer == null)
+        {
+            return NotFound();
+        }
+        return Ok(customer);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(CustomerDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<CustomerDto>> CreateCustomer([FromBody] CreateCustomerDTO createDto, CancellationToken cancellationToken)
+    {
+        var created = await _customerService.CreateCustomerAsync(createDto, cancellationToken);
+        return CreatedAtAction(nameof(GetCustomerById), new { id = created.Id }, created);
+    }
+
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(typeof(CustomerDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<CustomerDto>> UpdateCustomer(int id, [FromBody] UpdateCustomerDTO updateDto, CancellationToken cancellationToken)
+    {
+        var updated = await _customerService.UpdateCustomerAsync(id, updateDto, cancellationToken);
+        return Ok(updated);
+    }
 }

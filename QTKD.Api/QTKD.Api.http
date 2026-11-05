@@ -1,13 +1,136 @@
 @QTKD.Api_HostAddress = http://localhost:5079
 
-### 1. Lấy danh sách khách hàng (GET /api/customers)
+# =============================================================================
+# 1. CUSTOMER APIs
+# =============================================================================
+
+### 1.1. Lấy danh sách khách hàng
 GET {{QTKD.Api_HostAddress}}/api/customers
 Accept: application/json
 
-### 2. Lấy chi tiết hợp đồng HD-2026-018 theo Id = 1 (GET /api/contracts/{id})
+### 1.2. Xem chi tiết khách hàng theo Id = 1
+GET {{QTKD.Api_HostAddress}}/api/customers/1
+Accept: application/json
+
+### 1.3. Tạo khách hàng mới thành công (POST)
+POST {{QTKD.Api_HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  "name": "Công ty Cổ phần Công nghệ Sao Nam"
+}
+
+### 1.4. Tạo khách hàng lỗi (Tên để trống -> 400 Bad Request)
+POST {{QTKD.Api_HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+### 1.5. Cập nhật thông tin khách hàng (PUT /api/customers/1)
+PUT {{QTKD.Api_HostAddress}}/api/customers/1
+Content-Type: application/json
+
+{
+  "name": "Công ty Minh Phát (Chi nhánh miền Nam)",
+  "status": "Active"
+}
+
+# =============================================================================
+# 2. PRICING APIs
+# =============================================================================
+
+### 2.1. Lấy toàn bộ danh sách bảng giá kèm dịch vụ
+GET {{QTKD.Api_HostAddress}}/api/pricelists
+Accept: application/json
+
+### 2.2. Xem chi tiết bảng giá theo Id = 1
+GET {{QTKD.Api_HostAddress}}/api/pricelists/1
+Accept: application/json
+
+### 2.3. Tạo bảng giá mới (POST)
+POST {{QTKD.Api_HostAddress}}/api/pricelists
+Content-Type: application/json
+
+{
+  "name": "Bảng giá Dịch vụ AI & Tự động hóa 2026",
+  "effectiveDate": "2026-07-01"
+}
+
+### 2.4. Thêm đơn giá dịch vụ vào bảng giá Id = 1 (Thành công: UnitPrice > 0)
+POST {{QTKD.Api_HostAddress}}/api/pricelists/1/items
+Content-Type: application/json
+
+{
+  "serviceCode": "SVC-AI-AGENT",
+  "unitPrice": 25000000
+}
+
+### 2.5. Thêm đơn giá dịch vụ thất bại (UnitPrice <= 0 -> 400 Bad Request)
+POST {{QTKD.Api_HostAddress}}/api/pricelists/1/items
+Content-Type: application/json
+
+{
+  "serviceCode": "SVC-AI-FAIL",
+  "unitPrice": -5000
+}
+
+# =============================================================================
+# 3. CONTRACT & US03 DEMO LUỒNG 
+# =============================================================================
+
+### 3.1. Lấy danh sách toàn bộ hợp đồng
+GET {{QTKD.Api_HostAddress}}/api/contracts
+Accept: application/json
+
+### 3.2. Xem chi tiết hợp đồng Id = 1
 GET {{QTKD.Api_HostAddress}}/api/contracts/1
 Accept: application/json
 
-### 3. Lấy danh sách bảng giá kèm các hạng mục dịch vụ (GET /api/pricelists)
-GET {{QTKD.Api_HostAddress}}/api/pricelists
+### [DEMO BƯỚC 1]: Tạo Hợp đồng mới ở trạng thái Draft nhưng THIẾU Description
+POST {{QTKD.Api_HostAddress}}/api/contracts
+Content-Type: application/json
+
+{
+  "contractNo": "HD-2026-888",
+  "customerId": 1,
+  "startDate": "2026-06-01",
+  "endDate": "2027-06-01",
+  "description": ""
+}
+
+### [DEMO BƯỚC 2 - THẤT BẠI]: Gửi duyệt khi thiếu dữ liệu (CTR-02 / AC03 -> 400 Bad Request)
+# Giả sử hợp đồng vừa tạo ở trên có Id = 2 (hoặc thay bằng Id mới tạo)
+POST {{QTKD.Api_HostAddress}}/api/contracts/2/submit
 Accept: application/json
+
+### [DEMO BƯỚC 3]: Bổ sung dữ liệu hợp đồng (PUT /api/contracts/2)
+PUT {{QTKD.Api_HostAddress}}/api/contracts/2
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "startDate": "2026-06-01",
+  "endDate": "2027-06-01",
+  "description": "Cung cấp phần mềm quản trị kinh doanh trọn gói và hỗ trợ chuyển đổi số."
+}
+
+### [DEMO BƯỚC 4 - THÀNH CÔNG]: Gửi duyệt lại (CTR-02, CTR-03, AC04 -> Chuyển sang PendingApproval)
+POST {{QTKD.Api_HostAddress}}/api/contracts/2/submit
+Accept: application/json
+
+### [DEMO BƯỚC 5 - THỬ VI PHẠM AC05]: Gửi duyệt lại lần 2 (Từ chối vì đã ở PendingApproval)
+POST {{QTKD.Api_HostAddress}}/api/contracts/2/submit
+Accept: application/json
+
+### [DEMO BƯỚC 6 - THỬ VI PHẠM CTR-01]: Thử sửa hợp đồng khi đang ở PendingApproval (Bị từ chối)
+PUT {{QTKD.Api_HostAddress}}/api/contracts/2
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "startDate": "2026-06-01",
+  "endDate": "2027-06-01",
+  "description": "Cố tình sửa đổi hợp đồng khi đang chờ duyệt"
+}

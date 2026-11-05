@@ -24,7 +24,7 @@ public class QtkdDbContext : DbContext
             entity.Property(c => c.Name).IsRequired().HasMaxLength(200);
             entity.Property(c => c.Status).IsRequired().HasMaxLength(50);
 
-            // Dữ liệu mẫu: 2 Customer
+            // Dữ liệu mẫu ban đầu: 2 Customer
             entity.HasData(
                 new Customer
                 {
@@ -54,7 +54,7 @@ public class QtkdDbContext : DbContext
                   .HasForeignKey(c => c.CustomerId)
                   .OnDelete(DeleteBehavior.Restrict);
 
-            // Dữ liệu mẫu: 1 Contract ở trạng thái Draft
+            // Dữ liệu mẫu ban đầu: 1 Contract ở trạng thái Draft
             entity.HasData(
                 new Contract
                 {
@@ -74,7 +74,7 @@ public class QtkdDbContext : DbContext
             entity.HasKey(pl => pl.Id);
             entity.Property(pl => pl.Name).IsRequired().HasMaxLength(200);
 
-            // Dữ liệu mẫu: 1 PriceList
+            // Dữ liệu mẫu ban đầu: 1 PriceList
             entity.HasData(
                 new PriceList
                 {
@@ -96,7 +96,7 @@ public class QtkdDbContext : DbContext
                   .HasForeignKey(pi => pi.PriceListId)
                   .OnDelete(DeleteBehavior.Cascade);
 
-            // Dữ liệu mẫu: 2 PriceItem
+            // Dữ liệu mẫu ban đầu: 2 PriceItem
             entity.HasData(
                 new PriceItem
                 {

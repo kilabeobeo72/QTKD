@@ -28,6 +28,13 @@ builder.Services.AddScoped<IPriceListService, PriceListService>();
 
 var app = builder.Build();
 
+// Tự động Seed thêm dữ liệu phong phú phục vụ kiểm thử và demo
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<QtkdDbContext>();
+    await DbInitializer.SeedAsync(dbContext);
+}
+
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())

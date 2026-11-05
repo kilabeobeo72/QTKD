@@ -4,6 +4,9 @@ namespace QTKD.Api.Services;
 
 public interface IContractService
 {
-    Task<ContractResponseDto> GetContractByIdAsync(int id, CancellationToken cancellationToken = default);
     Task<List<ContractResponseDto>> GetAllContractsAsync(CancellationToken cancellationToken = default);
+    Task<ContractResponseDto> GetContractByIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ContractResponseDto> CreateContractAsync(CreateContractDto dto, CancellationToken cancellationToken = default);
+    Task<ContractResponseDto> UpdateContractAsync(int id, UpdateContractDto dto, CancellationToken cancellationToken = default);
+    Task<SubmitContractResponseDto> SubmitContractAsync(int id, CancellationToken cancellationToken = default);
 }

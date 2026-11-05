@@ -27,4 +27,20 @@ public class CustomerRepository : ICustomerRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
+
+    public async Task<Customer?> GetByIdForUpdateAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Customers
+            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);     
+    }
+
+    public async Task AddAsync(Customer customer, CancellationToken cancellationToken = default)
+    {
+        await _dbContext.Customers.AddAsync(customer, cancellationToken);
+    }
+
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        await _dbContext.SaveChangesAsync(cancellationToken);
+    }
 }

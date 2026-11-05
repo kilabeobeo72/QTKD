@@ -17,8 +17,31 @@ public class PriceListRepository : IPriceListRepository
     {
         return await _dbContext.PriceLists
             .AsNoTracking()
-            .Include(pl => pl.Items)
-            .OrderBy(pl => pl.Id)
+            .Include(p => p.Items)
+            .OrderBy(p => p.Id)
             .ToListAsync(cancellationToken);
+        }
+    public async Task<PriceList?> GetByIdWithItemsAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.PriceLists
+            .AsNoTracking()
+            .Include(p => p.Items)
+            .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
     }
+
+    public async Task AddAsync(PriceList priceList, CancellationToken cancellationToken = default)
+    {
+        await _dbContext.PriceLists.AddAsync(priceList, cancellationToken);
+    }
+
+    public async Task AddItemAsync(PriceItem priceItem, CancellationToken cancellationToken = default)
+    {
+        await _dbContext.PriceItems.AddAsync(priceItem, cancellationToken);
+    }
+
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        await _dbContext.SaveChangesAsync(cancellationToken);
+    }
+    
 }

@@ -29,4 +29,32 @@ public class ContractRepository : IContractRepository
             .OrderBy(c => c.Id)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<Contract?> GetByIdForUpdateAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Contracts
+            .Include(c => c.Customer)
+            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+    }
+
+    public async Task<bool> ExistsByContractNoAsync(string contractNo, int? excludeId = null, CancellationToken cancellationToken = default)
+    {
+        var query = _dbContext.Contracts.AsNoTracking().Where(c => c.ContractNo == contractNo);
+        if (excludeId.HasValue)
+        {
+            query = query.Where(c => c.Id != excludeId.Value);
+        }
+        return await query.AnyAsync(cancellationToken);
+    }
+
+    public async Task AddAsync(Contract contract, CancellationToken cancellationToken = default)
+    {
+        await _dbContext.Contracts.AddAsync(contract, cancellationToken);
+    }
+
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        await _dbContext.SaveChangesAsync(cancellationToken);
+    }
+    
 }
