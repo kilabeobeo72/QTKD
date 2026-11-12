@@ -105,7 +105,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC04_UpdateContract_WhenStatusIsPendingApproval_ShouldThrowInvalidOperationException()
     {
-        // Arrange: Hợp đồng đang ở PendingApproval (Vi phạm CTR-01 nếu cố tình sửa)
+        // Hợp đồng đang ở PendingApproval (Vi phạm CTR-01 nếu cố tình sửa)
         var contract = new Contract
         {
             Id = 3,

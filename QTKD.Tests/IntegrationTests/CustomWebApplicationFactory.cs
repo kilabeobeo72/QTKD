@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using QTKD.Api.Data;
 
 namespace QTKD.Tests.IntegrationTests;
@@ -18,6 +19,12 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.UseEnvironment("Testing");
+
+        // Tắt bớt log server của Web Host khi chạy test để màn hình console gọn gàng
+        builder.ConfigureLogging(logging =>
+        {
+            logging.ClearProviders();
+        });
 
         builder.ConfigureServices(services =>
         {
