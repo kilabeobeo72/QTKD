@@ -20,7 +20,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
         builder.UseEnvironment("Testing");
 
-        // Tắt bớt log server của Web Host khi chạy test để màn hình console gọn gàng
         builder.ConfigureLogging(logging =>
         {
             logging.ClearProviders();
