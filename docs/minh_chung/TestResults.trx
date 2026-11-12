@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="000e09f1-4c18-4933-bbe0-42ae9b774b4d" name="Trung Kien@DESKTOP-NE5TDIP 2026-11-12 14:13:13" runUser="DESKTOP-NE5TDIP\Trung Kien" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-12T14:13:13.5209135+07:00" queuing="2026-11-12T14:13:13.5209140+07:00" start="2026-11-12T14:13:12.8237106+07:00" finish="2026-11-12T14:13:14.3128049+07:00" />
+  <TestSettings name="default" id="23bc9322-4335-40b8-b675-7386b19e8f1e">
+    <Deployment runDeploymentRoot="Trung_Kien_DESKTOP-NE5TDIP_2026-11-12_14_13_13" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="8f721bc7-bded-45b9-98d0-fe6c49cd4c54" testId="b9f89178-d360-b780-86b5-2876ae03fb41" testName="QTKD.Tests.IntegrationTests.ContractApiTests.TC08_SubmitContract_WhenAlreadyPendingApproval_Returns400BadRequest" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0063414" startTime="2026-11-12T14:13:14.2388746+07:00" endTime="2026-11-12T14:13:14.2446832+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8f721bc7-bded-45b9-98d0-fe6c49cd4c54" />
+    <UnitTestResult executionId="ea68a509-5224-4383-886f-3b5331a0edb7" testId="951e6754-fee0-7f4d-fb65-89e6dccf00f5" testName="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WhenPriceListNotFound_ShouldThrowKeyNotFoundException" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0021176" startTime="2026-11-12T14:13:13.4969829+07:00" endTime="2026-11-12T14:13:13.4970891+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea68a509-5224-4383-886f-3b5331a0edb7" />
+    <UnitTestResult executionId="662d8d34-4a9e-43af-9d23-ceb7d4f096ae" testId="c904b167-60a7-00cc-2b3f-20942e8b3b5c" testName="QTKD.Tests.IntegrationTests.ContractApiTests.TC03_UpdateContract_WhenDraft_Returns200Ok" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0043566" startTime="2026-11-12T14:13:14.2448297+07:00" endTime="2026-11-12T14:13:14.2494063+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="662d8d34-4a9e-43af-9d23-ceb7d4f096ae" />
+    <UnitTestResult executionId="4e3f1adb-257a-470e-8bdd-0deb5419eb72" testId="990afc54-a84f-fef0-5660-7ce1e409ead7" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC03_UpdateContract_WhenStatusIsDraft_ShouldSucceed" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0711952" startTime="2026-11-12T14:13:13.3801838+07:00" endTime="2026-11-12T14:13:13.4540524+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e3f1adb-257a-470e-8bdd-0deb5419eb72" />
+    <UnitTestResult executionId="e120b549-7adf-4aef-a01a-1e10e9a50991" testId="42af0f40-70c8-f539-7727-f6183c8ec783" testName="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WithZeroOrNegativeUnitPrice_ShouldThrowArgumentException(invalidPrice: 0)" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0686602" startTime="2026-11-12T14:13:13.3802093+07:00" endTime="2026-11-12T14:13:13.4582454+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e120b549-7adf-4aef-a01a-1e10e9a50991" />
+    <UnitTestResult executionId="b757952e-4596-49fe-a8fe-b2081f547a0d" testId="0888e472-ebbf-48f4-c2aa-e08df6576c00" testName="QTKD.Tests.IntegrationTests.FullFlowIntegrationTests.FullDemoFlow_FromCustomerToContractSubmit_ShouldSucceedAllSteps" computerName="DESKTOP-NE5TDIP" duration="00:00:00.8602233" startTime="2026-11-12T14:13:13.3789587+07:00" endTime="2026-11-12T14:13:14.2413466+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b757952e-4596-49fe-a8fe-b2081f547a0d" />
+    <UnitTestResult executionId="cd2ea588-0591-4dce-97af-140917d4d8b7" testId="c0f009a1-62ec-742e-ce85-f90c0af580e5" testName="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WithZeroOrNegativeUnitPrice_ShouldThrowArgumentException(invalidPrice: -50000)" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0017083" startTime="2026-11-12T14:13:13.4729220+07:00" endTime="2026-11-12T14:13:13.4969152+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cd2ea588-0591-4dce-97af-140917d4d8b7" />
+    <UnitTestResult executionId="2f100c5c-3adc-4323-90b9-47835b94896e" testId="1a2ebeb8-5c67-cbc3-c389-6f2cee76120e" testName="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithValidName_ShouldSucceedWithActiveStatus" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0100686" startTime="2026-11-12T14:13:13.4972294+07:00" endTime="2026-11-12T14:13:13.4973265+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f100c5c-3adc-4323-90b9-47835b94896e" />
+    <UnitTestResult executionId="653a9243-1c33-4326-8150-698cfab5a5d7" testId="0d4dddb0-1ff8-1ec5-998e-154efe2e3ca0" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC03_UpdateContract_WhenStatusIsRevisionRequested_ShouldSucceed" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0012235" startTime="2026-11-12T14:13:13.4986849+07:00" endTime="2026-11-12T14:13:13.5003200+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="653a9243-1c33-4326-8150-698cfab5a5d7" />
+    <UnitTestResult executionId="d59f3ddd-ee10-4b4d-82f4-a70934fc9975" testId="c0f41306-68cd-0c15-bca4-7184bea3345f" testName="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithMissingName_ShouldThrowArgumentException(invalidName: null)" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0004509" startTime="2026-11-12T14:13:13.4965443+07:00" endTime="2026-11-12T14:13:13.4965976+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d59f3ddd-ee10-4b4d-82f4-a70934fc9975" />
+    <UnitTestResult executionId="a7362307-eed8-4190-96c8-d806400c487c" testId="51b35816-90a3-5e95-1556-8948f52440e7" testName="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WithValidUnitPrice_ShouldSucceed" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0120229" startTime="2026-11-12T14:13:13.4971398+07:00" endTime="2026-11-12T14:13:13.4994334+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a7362307-eed8-4190-96c8-d806400c487c" />
+    <UnitTestResult executionId="563aa07b-98cd-4b6c-838d-602ba73e73bf" testId="9e56b371-cae2-a1dd-06e4-518a1baad5a8" testName="QTKD.Tests.IntegrationTests.ContractApiTests.TC04_UpdateContract_WhenPendingApproval_Returns400BadRequest" computerName="DESKTOP-NE5TDIP" duration="00:00:00.8485115" startTime="2026-11-12T14:13:13.3802531+07:00" endTime="2026-11-12T14:13:14.2296457+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="563aa07b-98cd-4b6c-838d-602ba73e73bf" />
+    <UnitTestResult executionId="bb3e7254-bd0c-4521-a08a-5d9a31de8257" testId="4fd190cc-e64d-6574-a217-877a63c085fc" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC07_DraftToApproved_DirectTransition_IsDisallowedByDesign" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0022664" startTime="2026-11-12T14:13:13.4737169+07:00" endTime="2026-11-12T14:13:13.4970072+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb3e7254-bd0c-4521-a08a-5d9a31de8257" />
+    <UnitTestResult executionId="7d4d1e52-6d01-4956-afc8-5e0e9c7f16e3" testId="3c1022bc-af73-68f4-15de-5ab486758fa4" testName="QTKD.Tests.IntegrationTests.CustomerApiTests.TC02_CreateCustomer_WithMissingName_Returns400BadRequest" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0169864" startTime="2026-11-12T14:13:14.1916955+07:00" endTime="2026-11-12T14:13:14.2090590+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d4d1e52-6d01-4956-afc8-5e0e9c7f16e3" />
+    <UnitTestResult executionId="c7362858-8589-428d-bd05-5766ae77316c" testId="9525b0aa-a985-9468-a619-8ba3e6cad011" testName="QTKD.Tests.UnitTests.CustomerServiceTests.UpdateCustomer_WhenCustomerNotFound_ShouldThrowKeyNotFoundException" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0028040" startTime="2026-11-12T14:13:13.4968881+07:00" endTime="2026-11-12T14:13:13.4971633+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7362858-8589-428d-bd05-5766ae77316c" />
+    <UnitTestResult executionId="148b5ed7-0f06-471e-8bca-4881fb809462" testId="dc04d61c-3a0f-5644-fef7-8945f79cee79" testName="QTKD.Tests.IntegrationTests.ContractApiTests.TC05_SubmitContract_WhenMissingDescription_Returns400BadRequest" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0079507" startTime="2026-11-12T14:13:14.2298339+07:00" endTime="2026-11-12T14:13:14.2379875+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="148b5ed7-0f06-471e-8bca-4881fb809462" />
+    <UnitTestResult executionId="927712b5-9699-4797-8c6a-6e323690d621" testId="cc0a72d6-fd95-ffec-4acd-9c4482cfa77e" testName="QTKD.Tests.IntegrationTests.CustomerApiTests.TC01_CreateCustomer_WithValidData_Returns201AndPersistsInDatabase" computerName="DESKTOP-NE5TDIP" duration="00:00:00.8080672" startTime="2026-11-12T14:13:13.3802327+07:00" endTime="2026-11-12T14:13:14.1908249+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="927712b5-9699-4797-8c6a-6e323690d621" />
+    <UnitTestResult executionId="ef2bd47d-b3a3-460d-9c69-e791e96a4257" testId="43f44bdf-6f0b-eb21-d266-f8ea00276d3d" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC05_SubmitContract_WhenDescriptionIsEmpty_ShouldBeRejectedAndRemainDraft" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0033843" startTime="2026-11-12T14:13:13.4970653+07:00" endTime="2026-11-12T14:13:13.4972515+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef2bd47d-b3a3-460d-9c69-e791e96a4257" />
+    <UnitTestResult executionId="0445841a-d4ba-4a09-a323-6a9d4eb906d5" testId="17945085-a5c6-818b-a6df-97f324b55720" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC05_SubmitContract_WhenCustomerIsInactive_ShouldBeRejected" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0015079" startTime="2026-11-12T14:13:13.5005810+07:00" endTime="2026-11-12T14:13:13.5006136+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0445841a-d4ba-4a09-a323-6a9d4eb906d5" />
+    <UnitTestResult executionId="36963900-dc20-4b4f-82f9-5c1ca36b5a7a" testId="26a6f5b4-b35e-ce16-3e68-eb6d4faa5285" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC04_UpdateContract_WhenStatusIsPendingApproval_ShouldThrowInvalidOperationException" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0020328" startTime="2026-11-12T14:13:13.5006879+07:00" endTime="2026-11-12T14:13:13.5007206+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36963900-dc20-4b4f-82f9-5c1ca36b5a7a" />
+    <UnitTestResult executionId="d0458c85-3118-4abe-93da-a32295443fe7" testId="ce0b017c-44d0-9c04-6539-d623b0ab3fd7" testName="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithMissingName_ShouldThrowArgumentException(invalidName: &quot;   &quot;)" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0699527" startTime="2026-11-12T14:13:13.3801261+07:00" endTime="2026-11-12T14:13:13.4581297+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0458c85-3118-4abe-93da-a32295443fe7" />
+    <UnitTestResult executionId="183ec5e0-5836-4062-a55f-565a2e4a0f3e" testId="76d77189-f2cc-c28d-3910-287d7f51eba7" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC08_SubmitContract_WhenAlreadyPendingApproval_ShouldThrowException" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0016075" startTime="2026-11-12T14:13:13.5004625+07:00" endTime="2026-11-12T14:13:13.5005040+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="183ec5e0-5836-4062-a55f-565a2e4a0f3e" />
+    <UnitTestResult executionId="610aed38-9b49-42b2-9470-4e4b49f271ba" testId="7232c499-4479-0f00-0524-3634297dd23f" testName="QTKD.Tests.IntegrationTests.ContractApiTests.TC06_SubmitContract_WhenValid_Returns200OkAndStatusIsPendingApproval" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0068018" startTime="2026-11-12T14:13:14.2496395+07:00" endTime="2026-11-12T14:13:14.2566025+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="610aed38-9b49-42b2-9470-4e4b49f271ba" />
+    <UnitTestResult executionId="8bbc2e8c-beaa-4315-921c-b2b9f57f0d05" testId="133c6c3b-0ce5-156d-7cf6-b89de75c6e34" testName="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithMissingName_ShouldThrowArgumentException(invalidName: &quot;&quot;)" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0010108" startTime="2026-11-12T14:13:13.4729421+07:00" endTime="2026-11-12T14:13:13.4737553+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8bbc2e8c-beaa-4315-921c-b2b9f57f0d05" />
+    <UnitTestResult executionId="4ed5ef7b-d8ce-4fa6-8909-3de3d0b7a64e" testId="8e1eb9df-bdd4-17d2-4f48-e519c2b097de" testName="QTKD.Tests.UnitTests.ContractServiceTests.TC06_SubmitContract_WhenValid_ShouldTransitionToPendingApproval" computerName="DESKTOP-NE5TDIP" duration="00:00:00.0096113" startTime="2026-11-12T14:13:13.4973021+07:00" endTime="2026-11-12T14:13:13.4973578+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ed5ef7b-d8ce-4fa6-8909-3de3d0b7a64e" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="QTKD.Tests.IntegrationTests.CustomerApiTests.TC01_CreateCustomer_WithValidData_Returns201AndPersistsInDatabase" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="cc0a72d6-fd95-ffec-4acd-9c4482cfa77e">
+      <Execution id="927712b5-9699-4797-8c6a-6e323690d621" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.CustomerApiTests" name="TC01_CreateCustomer_WithValidData_Returns201AndPersistsInDatabase" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.CustomerApiTests.TC02_CreateCustomer_WithMissingName_Returns400BadRequest" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="3c1022bc-af73-68f4-15de-5ab486758fa4">
+      <Execution id="7d4d1e52-6d01-4956-afc8-5e0e9c7f16e3" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.CustomerApiTests" name="TC02_CreateCustomer_WithMissingName_Returns400BadRequest" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC08_SubmitContract_WhenAlreadyPendingApproval_ShouldThrowException" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="76d77189-f2cc-c28d-3910-287d7f51eba7">
+      <Execution id="183ec5e0-5836-4062-a55f-565a2e4a0f3e" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC08_SubmitContract_WhenAlreadyPendingApproval_ShouldThrowException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WithValidUnitPrice_ShouldSucceed" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="51b35816-90a3-5e95-1556-8948f52440e7">
+      <Execution id="a7362307-eed8-4190-96c8-d806400c487c" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.PriceListServiceTests" name="AddPriceItem_WithValidUnitPrice_ShouldSucceed" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithMissingName_ShouldThrowArgumentException(invalidName: &quot;&quot;)" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="133c6c3b-0ce5-156d-7cf6-b89de75c6e34">
+      <Execution id="8bbc2e8c-beaa-4315-921c-b2b9f57f0d05" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.CustomerServiceTests" name="CreateCustomer_WithMissingName_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.CustomerServiceTests.UpdateCustomer_WhenCustomerNotFound_ShouldThrowKeyNotFoundException" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="9525b0aa-a985-9468-a619-8ba3e6cad011">
+      <Execution id="c7362858-8589-428d-bd05-5766ae77316c" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.CustomerServiceTests" name="UpdateCustomer_WhenCustomerNotFound_ShouldThrowKeyNotFoundException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC05_SubmitContract_WhenDescriptionIsEmpty_ShouldBeRejectedAndRemainDraft" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="43f44bdf-6f0b-eb21-d266-f8ea00276d3d">
+      <Execution id="ef2bd47d-b3a3-460d-9c69-e791e96a4257" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC05_SubmitContract_WhenDescriptionIsEmpty_ShouldBeRejectedAndRemainDraft" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.FullFlowIntegrationTests.FullDemoFlow_FromCustomerToContractSubmit_ShouldSucceedAllSteps" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="0888e472-ebbf-48f4-c2aa-e08df6576c00">
+      <Execution id="b757952e-4596-49fe-a8fe-b2081f547a0d" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.FullFlowIntegrationTests" name="FullDemoFlow_FromCustomerToContractSubmit_ShouldSucceedAllSteps" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.ContractApiTests.TC08_SubmitContract_WhenAlreadyPendingApproval_Returns400BadRequest" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="b9f89178-d360-b780-86b5-2876ae03fb41">
+      <Execution id="8f721bc7-bded-45b9-98d0-fe6c49cd4c54" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.ContractApiTests" name="TC08_SubmitContract_WhenAlreadyPendingApproval_Returns400BadRequest" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WithZeroOrNegativeUnitPrice_ShouldThrowArgumentException(invalidPrice: -50000)" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="c0f009a1-62ec-742e-ce85-f90c0af580e5">
+      <Execution id="cd2ea588-0591-4dce-97af-140917d4d8b7" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.PriceListServiceTests" name="AddPriceItem_WithZeroOrNegativeUnitPrice_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.ContractApiTests.TC04_UpdateContract_WhenPendingApproval_Returns400BadRequest" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="9e56b371-cae2-a1dd-06e4-518a1baad5a8">
+      <Execution id="563aa07b-98cd-4b6c-838d-602ba73e73bf" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.ContractApiTests" name="TC04_UpdateContract_WhenPendingApproval_Returns400BadRequest" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC07_DraftToApproved_DirectTransition_IsDisallowedByDesign" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="4fd190cc-e64d-6574-a217-877a63c085fc">
+      <Execution id="bb3e7254-bd0c-4521-a08a-5d9a31de8257" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC07_DraftToApproved_DirectTransition_IsDisallowedByDesign" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.ContractApiTests.TC03_UpdateContract_WhenDraft_Returns200Ok" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="c904b167-60a7-00cc-2b3f-20942e8b3b5c">
+      <Execution id="662d8d34-4a9e-43af-9d23-ceb7d4f096ae" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.ContractApiTests" name="TC03_UpdateContract_WhenDraft_Returns200Ok" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC04_UpdateContract_WhenStatusIsPendingApproval_ShouldThrowInvalidOperationException" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="26a6f5b4-b35e-ce16-3e68-eb6d4faa5285">
+      <Execution id="36963900-dc20-4b4f-82f9-5c1ca36b5a7a" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC04_UpdateContract_WhenStatusIsPendingApproval_ShouldThrowInvalidOperationException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC03_UpdateContract_WhenStatusIsRevisionRequested_ShouldSucceed" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="0d4dddb0-1ff8-1ec5-998e-154efe2e3ca0">
+      <Execution id="653a9243-1c33-4326-8150-698cfab5a5d7" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC03_UpdateContract_WhenStatusIsRevisionRequested_ShouldSucceed" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.ContractApiTests.TC06_SubmitContract_WhenValid_Returns200OkAndStatusIsPendingApproval" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="7232c499-4479-0f00-0524-3634297dd23f">
+      <Execution id="610aed38-9b49-42b2-9470-4e4b49f271ba" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.ContractApiTests" name="TC06_SubmitContract_WhenValid_Returns200OkAndStatusIsPendingApproval" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WithZeroOrNegativeUnitPrice_ShouldThrowArgumentException(invalidPrice: 0)" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="42af0f40-70c8-f539-7727-f6183c8ec783">
+      <Execution id="e120b549-7adf-4aef-a01a-1e10e9a50991" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.PriceListServiceTests" name="AddPriceItem_WithZeroOrNegativeUnitPrice_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC05_SubmitContract_WhenCustomerIsInactive_ShouldBeRejected" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="17945085-a5c6-818b-a6df-97f324b55720">
+      <Execution id="0445841a-d4ba-4a09-a323-6a9d4eb906d5" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC05_SubmitContract_WhenCustomerIsInactive_ShouldBeRejected" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.IntegrationTests.ContractApiTests.TC05_SubmitContract_WhenMissingDescription_Returns400BadRequest" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="dc04d61c-3a0f-5644-fef7-8945f79cee79">
+      <Execution id="148b5ed7-0f06-471e-8bca-4881fb809462" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.IntegrationTests.ContractApiTests" name="TC05_SubmitContract_WhenMissingDescription_Returns400BadRequest" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithValidName_ShouldSucceedWithActiveStatus" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="1a2ebeb8-5c67-cbc3-c389-6f2cee76120e">
+      <Execution id="2f100c5c-3adc-4323-90b9-47835b94896e" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.CustomerServiceTests" name="CreateCustomer_WithValidName_ShouldSucceedWithActiveStatus" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC03_UpdateContract_WhenStatusIsDraft_ShouldSucceed" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="990afc54-a84f-fef0-5660-7ce1e409ead7">
+      <Execution id="4e3f1adb-257a-470e-8bdd-0deb5419eb72" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC03_UpdateContract_WhenStatusIsDraft_ShouldSucceed" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.ContractServiceTests.TC06_SubmitContract_WhenValid_ShouldTransitionToPendingApproval" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="8e1eb9df-bdd4-17d2-4f48-e519c2b097de">
+      <Execution id="4ed5ef7b-d8ce-4fa6-8909-3de3d0b7a64e" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.ContractServiceTests" name="TC06_SubmitContract_WhenValid_ShouldTransitionToPendingApproval" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.PriceListServiceTests.AddPriceItem_WhenPriceListNotFound_ShouldThrowKeyNotFoundException" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="951e6754-fee0-7f4d-fb65-89e6dccf00f5">
+      <Execution id="ea68a509-5224-4383-886f-3b5331a0edb7" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.PriceListServiceTests" name="AddPriceItem_WhenPriceListNotFound_ShouldThrowKeyNotFoundException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithMissingName_ShouldThrowArgumentException(invalidName: null)" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="c0f41306-68cd-0c15-bca4-7184bea3345f">
+      <Execution id="d59f3ddd-ee10-4b4d-82f4-a70934fc9975" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.CustomerServiceTests" name="CreateCustomer_WithMissingName_ShouldThrowArgumentException" />
+    </UnitTest>
+    <UnitTest name="QTKD.Tests.UnitTests.CustomerServiceTests.CreateCustomer_WithMissingName_ShouldThrowArgumentException(invalidName: &quot;   &quot;)" storage="d:\source\qtkd.tests\bin\debug\net10.0\qtkd.tests.dll" id="ce0b017c-44d0-9c04-6539-d623b0ab3fd7">
+      <Execution id="d0458c85-3118-4abe-93da-a32295443fe7" />
+      <TestMethod codeBase="D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="QTKD.Tests.UnitTests.CustomerServiceTests" name="CreateCustomer_WithMissingName_ShouldThrowArgumentException" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b9f89178-d360-b780-86b5-2876ae03fb41" executionId="8f721bc7-bded-45b9-98d0-fe6c49cd4c54" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="951e6754-fee0-7f4d-fb65-89e6dccf00f5" executionId="ea68a509-5224-4383-886f-3b5331a0edb7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c904b167-60a7-00cc-2b3f-20942e8b3b5c" executionId="662d8d34-4a9e-43af-9d23-ceb7d4f096ae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="990afc54-a84f-fef0-5660-7ce1e409ead7" executionId="4e3f1adb-257a-470e-8bdd-0deb5419eb72" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="42af0f40-70c8-f539-7727-f6183c8ec783" executionId="e120b549-7adf-4aef-a01a-1e10e9a50991" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0888e472-ebbf-48f4-c2aa-e08df6576c00" executionId="b757952e-4596-49fe-a8fe-b2081f547a0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0f009a1-62ec-742e-ce85-f90c0af580e5" executionId="cd2ea588-0591-4dce-97af-140917d4d8b7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a2ebeb8-5c67-cbc3-c389-6f2cee76120e" executionId="2f100c5c-3adc-4323-90b9-47835b94896e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d4dddb0-1ff8-1ec5-998e-154efe2e3ca0" executionId="653a9243-1c33-4326-8150-698cfab5a5d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0f41306-68cd-0c15-bca4-7184bea3345f" executionId="d59f3ddd-ee10-4b4d-82f4-a70934fc9975" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="51b35816-90a3-5e95-1556-8948f52440e7" executionId="a7362307-eed8-4190-96c8-d806400c487c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9e56b371-cae2-a1dd-06e4-518a1baad5a8" executionId="563aa07b-98cd-4b6c-838d-602ba73e73bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4fd190cc-e64d-6574-a217-877a63c085fc" executionId="bb3e7254-bd0c-4521-a08a-5d9a31de8257" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c1022bc-af73-68f4-15de-5ab486758fa4" executionId="7d4d1e52-6d01-4956-afc8-5e0e9c7f16e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9525b0aa-a985-9468-a619-8ba3e6cad011" executionId="c7362858-8589-428d-bd05-5766ae77316c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc04d61c-3a0f-5644-fef7-8945f79cee79" executionId="148b5ed7-0f06-471e-8bca-4881fb809462" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc0a72d6-fd95-ffec-4acd-9c4482cfa77e" executionId="927712b5-9699-4797-8c6a-6e323690d621" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="43f44bdf-6f0b-eb21-d266-f8ea00276d3d" executionId="ef2bd47d-b3a3-460d-9c69-e791e96a4257" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="17945085-a5c6-818b-a6df-97f324b55720" executionId="0445841a-d4ba-4a09-a323-6a9d4eb906d5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26a6f5b4-b35e-ce16-3e68-eb6d4faa5285" executionId="36963900-dc20-4b4f-82f9-5c1ca36b5a7a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce0b017c-44d0-9c04-6539-d623b0ab3fd7" executionId="d0458c85-3118-4abe-93da-a32295443fe7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="76d77189-f2cc-c28d-3910-287d7f51eba7" executionId="183ec5e0-5836-4062-a55f-565a2e4a0f3e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7232c499-4479-0f00-0524-3634297dd23f" executionId="610aed38-9b49-42b2-9470-4e4b49f271ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="133c6c3b-0ce5-156d-7cf6-b89de75c6e34" executionId="8bbc2e8c-beaa-4315-921c-b2b9f57f0d05" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8e1eb9df-bdd4-17d2-4f48-e519c2b097de" executionId="4ed5ef7b-d8ce-4fa6-8909-3de3d0b7a64e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="25" executed="25" passed="25" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.1)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: QTKD.Tests&#xD;
+[xUnit.net 00:00:00.20]   Discovered:  QTKD.Tests&#xD;
+[xUnit.net 00:00:00.22]   Starting:    QTKD.Tests&#xD;
+     Warning:&#xD;
+     The component "Fluent Assertions" is governed by the rules defined in the Xceed License Agreement and&#xD;
+     the Xceed Fluent Assertions Community License. You may use Fluent Assertions free of charge for&#xD;
+     non-commercial use only. An active subscription is required to use Fluent Assertions for commercial use.&#xD;
+     Please contact Xceed Sales mailto:sales@xceed.com to acquire a subscription at a very low cost.&#xD;
+     A paid commercial license supports the development and continued increasing support of&#xD;
+     Fluent Assertions users under both commercial and community licenses. Help us&#xD;
+     keep Fluent Assertions at the forefront of unit testing.&#xD;
+     For more information, visit https://xceed.com/products/unit-testing/fluent-assertions/&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\source\QTKD.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\source\QTKD.Api&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\source\QTKD.Api&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+fail: QTKD.Api.Middleware.ExceptionHandlingMiddleware[0]&#xD;
+      Da x?y ra l?i khi x? ly request POST /api/contracts/5/submit&#xD;
+      System.InvalidOperationException: Kh�ng d�p ?ng quy t?c CTR-02 d? g?i duy?t h?p d?ng:&#xD;
+- N?i dung t�m t?t/di?u kho?n h?p d?ng l� b?t bu?c tru?c khi tr�nh duy?t.&#xD;
+         at QTKD.Api.Services.ContractService.SubmitContractAsync(Int32 id, CancellationToken cancellationToken) in D:\source\QTKD.Api\Services\ContractService.cs:line 169&#xD;
+         at QTKD.Api.Controllers.ContractsController.SubmitContract(Int32 id, CancellationToken cancellationToken) in D:\source\QTKD.Api\Controllers\ContractsController.cs:line 62&#xD;
+         at lambda_method835(Closure, Object)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()&#xD;
+      --- End of stack trace from previous location ---&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at QTKD.Api.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in D:\source\QTKD.Api\Middleware\ExceptionHandlingMiddleware.cs:line 21&#xD;
+fail: QTKD.Api.Middleware.ExceptionHandlingMiddleware[0]&#xD;
+      Da x?y ra l?i khi x? ly request PUT /api/contracts/5&#xD;
+      System.InvalidOperationException: Ch? du?c ch?nh s?a h?p d?ng ? tr?ng th�i 'Draft' ho?c 'RevisionRequested'. Tr?ng th�i hi?n t?i: 'PendingApproval'.&#xD;
+         at QTKD.Api.Services.ContractService.UpdateContractAsync(Int32 id, UpdateContractDto dto, CancellationToken cancellationToken) in D:\source\QTKD.Api\Services\ContractService.cs:line 101&#xD;
+         at QTKD.Api.Controllers.ContractsController.UpdateContract(Int32 id, UpdateContractDto dto, CancellationToken cancellationToken) in D:\source\QTKD.Api\Controllers\ContractsController.cs:line 52&#xD;
+         at lambda_method861(Closure, Object)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()&#xD;
+      --- End of stack trace from previous location ---&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at QTKD.Api.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in D:\source\QTKD.Api\Middleware\ExceptionHandlingMiddleware.cs:line 21&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+fail: QTKD.Api.Middleware.ExceptionHandlingMiddleware[0]&#xD;
+      Da x?y ra l?i khi x? ly request POST /api/contracts/6/submit&#xD;
+      System.InvalidOperationException: Kh�ng d�p ?ng quy t?c CTR-02 d? g?i duy?t h?p d?ng:&#xD;
+- N?i dung t�m t?t/di?u kho?n h?p d?ng l� b?t bu?c tru?c khi tr�nh duy?t.&#xD;
+         at QTKD.Api.Services.ContractService.SubmitContractAsync(Int32 id, CancellationToken cancellationToken) in D:\source\QTKD.Api\Services\ContractService.cs:line 169&#xD;
+         at QTKD.Api.Controllers.ContractsController.SubmitContract(Int32 id, CancellationToken cancellationToken) in D:\source\QTKD.Api\Controllers\ContractsController.cs:line 62&#xD;
+         at lambda_method834(Closure, Object)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()&#xD;
+      --- End of stack trace from previous location ---&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at QTKD.Api.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in D:\source\QTKD.Api\Middleware\ExceptionHandlingMiddleware.cs:line 21&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+fail: QTKD.Api.Middleware.ExceptionHandlingMiddleware[0]&#xD;
+      Da x?y ra l?i khi x? ly request POST /api/contracts/7/submit&#xD;
+      System.InvalidOperationException: H?p d?ng da ? tr?ng th�i Ch? ph� duy?t, kh�ng th? g?i duy?t l?i.&#xD;
+         at QTKD.Api.Services.ContractService.SubmitContractAsync(Int32 id, CancellationToken cancellationToken) in D:\source\QTKD.Api\Services\ContractService.cs:line 142&#xD;
+         at QTKD.Api.Controllers.ContractsController.SubmitContract(Int32 id, CancellationToken cancellationToken) in D:\source\QTKD.Api\Controllers\ContractsController.cs:line 62&#xD;
+         at lambda_method834(Closure, Object)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeActionMethodAsync&gt;g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.&lt;InvokeNextActionFilterAsync&gt;g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State&amp; next, Scope&amp; scope, Object&amp; state, Boolean&amp; isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()&#xD;
+      --- End of stack trace from previous location ---&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)&#xD;
+         at QTKD.Api.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in D:\source\QTKD.Api\Middleware\ExceptionHandlingMiddleware.cs:line 21&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:01.12]   Finished:    QTKD.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

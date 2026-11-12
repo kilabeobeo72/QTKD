@@ -72,7 +72,8 @@ public class ExceptionHandlingMiddleware
 
         var json = JsonSerializer.Serialize(response, new JsonSerializerOptions
         {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(System.Text.Unicode.UnicodeRanges.All)
         });
 
         await context.Response.WriteAsync(json);

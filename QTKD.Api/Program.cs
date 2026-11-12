@@ -51,3 +51,6 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
+
+// Cho phép WebApplicationFactory trong QTKD.Tests truy cập vào Program để chạy Integration Test
+public partial class Program { }

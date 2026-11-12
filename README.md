@@ -37,40 +37,34 @@
 ### Cấu trúc thư mục mã nguồn:
 ```text
 QTKD/
-├── QTKD.sln
-├── README.md                                       # Tài liệu hướng dẫn cài đặt, kịch bản demo & đối chiếu quy tắc
-└── QTKD.Api/                                       # Project ASP.NET Core Web API (.NET 10)
-    ├── Controllers/                                # Tầng API Endpoints
-    │   ├── CustomersController.cs                  # CRUD Khách hàng
-    │   ├── ContractsController.cs                  # CRUD Hợp đồng & Endpoint submit duyệt (US03)
-    │   └── PriceListsController.cs                 # Quản lý Bảng giá & Giá dịch vụ
-    ├── Services/                                   # Tầng Xử lý nghiệp vụ & Quy tắc nghiệp vụ
-    │   ├── ICustomerService.cs / CustomerService.cs
-    │   ├── IContractService.cs / ContractService.cs# Cài đặt CTR-01, CTR-02, CTR-03, US03
-    │   └── IPriceListService.cs / PriceListService.cs
-    ├── Repositories/                               # Tầng Truy cập dữ liệu (EF Core Data Access)
-    │   ├── ICustomerRepository.cs / CustomerRepository.cs
-    │   ├── IContractRepository.cs / ContractRepository.cs
-    │   └── IPriceListRepository.cs / PriceListRepository.cs
-    ├── Models/                                     # Entities ánh xạ bảng PostgreSQL
-    │   ├── Customer.cs
-    │   ├── Contract.cs
-    │   ├── PriceList.cs
-    │   ├── PriceItem.cs
-    │   └── StatusConstants.cs                      # Hằng số CustomerStatus, ContractStatus
-    ├── DTOs/                                       # Data Transfer Objects
-    │   ├── CustomerDto.cs
-    │   ├── ContractDtos.cs
-    │   ├── PriceListDto.cs
-    │   └── ApiResponseDtos.cs                      # ApiErrorResponse chuẩn hóa lỗi
-    ├── Data/
-    │   ├── QtkdDbContext.cs                        # Cấu hình EF Core DbContext & Seed Data
-    │   └── DbInitializer.cs                        # Tự động nạp dữ liệu mẫu phong phú khi khởi động
-    ├── Middleware/
-    │   └── ExceptionHandlingMiddleware.cs          # Bắt lỗi toàn cục, trả về format JSON chuẩn
-    ├── Migrations/                                 # Lịch sử Migration PostgreSQL
-    ├── QTKD.Api.http                               # Bộ kịch bản kiểm thử API toàn diện
-    └── Program.cs                                  # Cấu hình DI, Middleware, OpenAPI/Swagger
+├── QTKD.sln                                           # Solution chứa dự án API và Test
+├── README.md                                          # Hướng dẫn kiến trúc, kịch bản demo & báo cáo kiểm thử
+├── QTKD.Api/                                          # src/ : Project ASP.NET Core Web API (.NET 10)
+│   ├── Controllers/                                   # Tầng API Endpoints (Customer, Contract, PriceList)
+│   ├── Services/                                      # Tầng Xử lý nghiệp vụ (CTR-01, CTR-02, CTR-03, US03)
+│   ├── Repositories/                                  # Tầng Truy cập dữ liệu (EF Core Data Access)
+│   ├── Models/                                        # Entities ánh xạ bảng PostgreSQL
+│   ├── DTOs/                                          # Data Transfer Objects
+│   ├── Data/                                          # QtkdDbContext & Seed Data tự động
+│   ├── Middleware/                                    # ExceptionHandlingMiddleware chuẩn hóa JSON lỗi UTF-8
+│   ├── Migrations/                                    # Lịch sử Migration PostgreSQL
+│   ├── QTKD.Api.http                                  # Kịch bản gọi API thủ công
+│   └── Program.cs                                     # Cấu hình DI, Middleware, OpenAPI/Swagger
+├── docs/                                              # docs/ : Minh chứng kiểm thử, tài liệu hướng dẫn
+│   └── minh_chung/
+│       └── TestResults.trx                            # File kết quả kiểm thử TRX nộp bài
+└── QTKD.Tests/                                        # tests/ : Project xUnit Testing (.NET 10)
+    ├── UnitTests/                                     # Kiểm thử nghiệp vụ Service độc lập (Isolation)
+    │   ├── ContractServiceTests.cs                    # Phủ CTR-01, CTR-02, CTR-03, AC02-AC05
+    │   ├── CustomerServiceTests.cs                    # Phủ nghiệp vụ Khách hàng
+    │   └── PriceListServiceTests.cs                   # Phủ nghiệp vụ Bảng giá
+    ├── IntegrationTests/                              # Kiểm thử tích hợp API Endpoints & Database
+    │   ├── CustomWebApplicationFactory.cs             # Khởi tạo TestServer với InMemory Database riêng biệt
+    │   ├── CustomerApiTests.cs                        # Tích hợp API Customer (TC01, TC02)
+    │   ├── ContractApiTests.cs                        # Tích hợp API Contract (TC03, TC04, TC05, TC06, TC08)
+    │   └── FullFlowIntegrationTests.cs                # Luồng tích hợp E2E xuyên suốt toàn bộ vòng đời
+    └── TestResults/                                   # Thư mục sinh tự động khi chạy dotnet test
+        └── TestResults.trx
 ```
 
 ---
@@ -143,12 +137,96 @@ Khi khởi động ứng dụng, hệ thống tự động khởi tạo dữ li�
 
 ---
 
-## 6. Hướng dẫn chạy dự án
+## 6. Hướng dẫn chạy dự án & Quy trình Demo cuối
+
+### Quy trình trọn vẹn: Clone → Cấu hình → Migration → Chạy API → Chạy Test
 
 ```bash
-# 1. Chạy ứng dụng
-dotnet run --project QTKD.Api
+# 1. Clone mã nguồn
+git clone https://github.com/kilabeobeo72/QTKD.git
+cd QTKD
 
-# 2. Truy cập Swagger UI kiểm thử:
-http://localhost:5079/swagger
+# 2. Cấu hình chuỗi kết nối Database PostgreSQL (User Secrets hoặc appsettings.json)
+dotnet user-secrets set "ConnectionStrings:QtkdDb" "Host=localhost;Port=5432;Database=qtkd_db;Username=postgres;Password=YOUR_PASSWORD" --project QTKD.Api
+
+# 3. Áp dụng Migration lên Database
+dotnet ef database update --project QTKD.Api
+
+# 4. Chạy API Web Service
+dotnet run --project QTKD.Api
+# Truy cập Swagger UI: http://localhost:5079/swagger
+
+# 5. Chạy toàn bộ hệ thống kiểm thử tự động (Unit Test & Integration Test)
+dotnet test --logger "trx;LogFileName=TestResults.trx"
 ```
+
+---
+
+## 7. Tuần 07 — Báo cáo Kết quả Kiểm thử Hệ thống (TC01 – TC08)
+
+### 7.1. Kiến trúc & Chiến lược Kiểm thử
+Hệ thống kiểm thử được tổ chức trong project riêng `QTKD.Tests` (xUnit, FluentAssertions, Moq, Microsoft.AspNetCore.Mvc.Testing):
+- **Unit Test (`QTKD.Tests/UnitTests`)**: Kiểm thử cô lập logic nghiệp vụ Service, độc lập với cơ sở dữ liệu thật bằng cách dùng Repository Mock và EF Core InMemory DbContext. Đảm bảo mỗi quy tắc nghiệp vụ (**CTR-01**, **CTR-02**, **CTR-03**) đều có ít nhất 1 ca kiểm thử thành công và 1 ca kiểm thử thất bại.
+- **Integration Test (`QTKD.Tests/IntegrationTests`)**: Kiểm thử tích hợp toàn diện thông qua `CustomWebApplicationFactory<Program>`, giả lập Web Host nội bộ và trỏ vào **InMemory Database riêng biệt** (`UseInMemoryDatabase(Guid.NewGuid())`), hoàn toàn không ảnh hưởng hay ghi đè lên database nghiệp vụ quan trọng.
+- **Xác thực toàn diện (Yêu cầu 17)**: Kiểm tra đồng thời **HTTP Status Code**, **Nội dung Response Body (JSON)** và **Dữ liệu thực tế được lưu/đọc lại từ Database** (`GET /api/...` hoặc trực tiếp DbContext). Không kết luận thành công chỉ dựa trên HTTP 200.
+
+---
+
+### 7.2. Bảng Tổng hợp Kết quả Kiểm thử Tối thiểu (TC01 – TC08)
+
+| Mã | Dữ liệu / Thao tác kiểm thử | Kết quả mong đợi | Kết quả | Hình thức | File mã nguồn kiểm thử |
+| :---: | :--- | :--- | :---: | :---: | :--- |
+| **TC01** | Tạo Customer hợp lệ qua `POST /api/customers` | Tạo thành công (HTTP 201 Created), đọc lại đúng thông tin từ DB qua `GET /api/customers/{id}` | **PASS** | Tự động | [`CustomerApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/CustomerApiTests.cs#L22-L46) & [`CustomerServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/CustomerServiceTests.cs#L27-L49) |
+| **TC02** | Tạo Customer thiếu thông tin bắt buộc (`Name` để rỗng) | Bị từ chối (HTTP 400 Bad Request), trả về thông báo lỗi rõ ràng | **PASS** | Tự động | [`CustomerApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/CustomerApiTests.cs#L48-L67) & [`CustomerServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/CustomerServiceTests.cs#L51-L67) |
+| **TC03** | Sửa Contract ở trạng thái `Draft` qua `PUT /api/contracts/{id}` | Thành công (HTTP 200 OK) khi dữ liệu hợp lệ; dữ liệu cập nhật lưu vào DB (**CTR-01**) | **PASS** | Tự động | [`ContractApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/ContractApiTests.cs#L25-L56) & [`ContractServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/ContractServiceTests.cs#L35-L65) |
+| **TC04** | Sửa Contract ở trạng thái `PendingApproval` qua `PUT /api/contracts/{id}` | Bị từ chối (HTTP 400 Bad Request); dữ liệu trong DB giữ nguyên không bị sửa (**CTR-01**) | **PASS** | Tự động | [`ContractApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/ContractApiTests.cs#L58-L96) & [`ContractServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/ContractServiceTests.cs#L67-L92) |
+| **TC05** | Submit Contract thiếu điều kiện **CTR-02** (`Description` rỗng hoặc Customer `Inactive`) qua `POST /api/contracts/{id}/submit` | Bị từ chối (HTTP 400 Bad Request); hợp đồng trong DB vẫn giữ nguyên là `Draft` | **PASS** | Tự động | [`ContractApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/ContractApiTests.cs#L102-L129) & [`ContractServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/ContractServiceTests.cs#L98-L157) |
+| **TC06** | Submit Contract hợp lệ đầy đủ điều kiện qua `POST /api/contracts/{id}/submit` | Thành công (HTTP 200 OK); trạng thái chuyển sang `PendingApproval` (**CTR-02, CTR-03**) | **PASS** | Tự động | [`ContractApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/ContractApiTests.cs#L131-L161) & [`ContractServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/ContractServiceTests.cs#L159-L191) |
+| **TC07** | Thử chuyển thẳng từ `Draft` sang `Approved` (bỏ qua bước duyệt) | Bị từ chối nghiêm ngặt (**CTR-03**: quy trình tuần tự bắt buộc `Draft` → `PendingApproval` → `Approved`/`Rejected`) | **PASS** | Tự động | [`ContractServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/ContractServiceTests.cs#L197-L225) |
+| **TC08** | Submit lặp đối với Contract đã ở trạng thái `PendingApproval` | Bị từ chối (HTTP 400 Bad Request); không tạo thêm kết quả hay phiên xử lý trùng (**AC05**) | **PASS** | Tự động | [`ContractApiTests.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/ContractApiTests.cs#L167-L192) & [`ContractServiceTests.cs`](file:///D:/source/QTKD.Tests/UnitTests/ContractServiceTests.cs#L231-L260) |
+
+> **Tổng kết tỷ lệ tự động hóa**: **8/8 (100%)** test case được tự động hóa hoàn toàn bằng xUnit. 0 test case phải chạy thủ công.
+> Tổng số bài test trong toàn bộ solution: **25 tests** (17 Unit Tests + 8 Integration Tests), **100% PASSED**.
+
+---
+
+### 7.3. Minh chứng Kiểm thử & Kết quả Thực thi
+
+File kết quả kiểm thử tiêu chuẩn TRX nộp bài được lưu trữ tại:
+- [`docs/minh_chung/TestResults.trx`](file:///D:/source/docs/minh_chung/TestResults.trx) (Minh chứng nộp bài)
+- [`QTKD.Tests/TestResults/TestResults.trx`](file:///D:/source/QTKD.Tests/TestResults/TestResults.trx) (Sinh tự động sau khi chạy lệnh `dotnet test`)
+
+**Console Output khi chạy `dotnet test`**:
+```text
+Test run for D:\source\QTKD.Tests\bin\Debug\net10.0\QTKD.Tests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\source\QTKD.Tests\TestResults\TestResults.trx
+
+Passed!  - Failed:     0, Passed:    25, Skipped:     0, Total:    25, Duration: 888 ms - QTKD.Tests.dll (net10.0)
+```
+
+---
+
+### 7.4. Báo cáo Lỗi Phát hiện và Giải pháp Khắc phục (Bug Report & Fixes)
+
+Trong quá trình thực hiện kiểm thử tự động Tuần 07, hệ thống đã phát hiện và xử lý triệt để 3 lỗi kỹ thuật quan trọng:
+
+#### Lỗi 1: Xung đột Assembly Version giữa Project API và Project Test (CS1705)
+- **Cách tái hiện**: Khi cài đặt `Microsoft.EntityFrameworkCore.InMemory (10.0.0)` vào `QTKD.Tests`, lệnh build ném lỗi:
+  `CSC : error CS1705: Assembly 'QTKD.Api' uses 'Microsoft.EntityFrameworkCore, Version=10.0.14.0' which has a higher version than referenced assembly Version=10.0.4.0`.
+- **Nguyên nhân**: `QTKD.Api` sử dụng EF Core Tools bản `10.0.14`, trong khi `QTKD.Tests` ban đầu kéo bản phụ thuộc `10.0.4`.
+- **Cách khắc phục**: Cập nhật file [`QTKD.Tests.csproj`](file:///D:/source/QTKD.Tests/QTKD.Tests.csproj), cấu hình đồng bộ phiên bản `10.0.14` cho toàn bộ các gói `Microsoft.EntityFrameworkCore`, `Microsoft.EntityFrameworkCore.InMemory`, `Microsoft.EntityFrameworkCore.Relational`.
+
+#### Lỗi 2: Xung đột Multi-Provider (PostgreSQL vs InMemory) trong Dependency Injection
+- **Cách tái hiện**: Khi chạy Integration Test qua `CustomWebApplicationFactory`, phương thức `EnsureCreated()` ném ngoại lệ:
+  `InvalidOperationException: Services for database providers 'Npgsql.EntityFrameworkCore.PostgreSQL', 'Microsoft.EntityFrameworkCore.InMemory' have been registered in the service provider. Only a single database provider can be registered...`
+- **Nguyên nhân**: Khi khởi động Web Host nội bộ, `Program.cs` đã đăng ký Npgsql Provider vào ServiceCollection. Khi `CustomWebApplicationFactory` gọi tiếp `UseInMemoryDatabase`, cả hai provider cùng tồn tại trong DI.
+- **Cách khắc phục**: Trong [`CustomWebApplicationFactory.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/CustomWebApplicationFactory.cs), thực hiện quét và gỡ bỏ triệt để tất cả các Service Descriptor thuộc namespace `Npgsql` và `Microsoft.EntityFrameworkCore` trước khi đăng ký `UseInMemoryDatabase`.
+
+#### Lỗi 3: Ký tự Tiếng Việt bị mã hóa dạng Unicode Escape `\uXXXX` trong phản hồi JSON
+- **Cách tái hiện**: Kiểm tra chuỗi thông báo lỗi trả về từ `ExceptionHandlingMiddleware` bằng `ReadAsStringAsync()`, thông điệp tiếng Việt bị chuyển thành `H\u1EE3p \u0111\u1ED3ng \u0111\u00E3 \u1EDF tr\u1EA1ng th\u00E1i...`.
+- **Nguyên nhân**: Mặc định bộ serialize của `System.Text.Json` áp dụng chuẩn mã hóa ASCII, chuyển đổi tất cả các ký tự nằm ngoài bảng chữ cái cơ bản sang escape sequence.
+- **Cách khắc phục**: Cập nhật [`ExceptionHandlingMiddleware.cs`](file:///D:/source/QTKD.Api/Middleware/ExceptionHandlingMiddleware.cs), bổ sung `Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)` vào `JsonSerializerOptions`. Phản hồi trả về đúng chuẩn UTF-8 tự nhiên, hiển thị trực quan trên mọi giao diện Swagger, Postman và Test assertion.
