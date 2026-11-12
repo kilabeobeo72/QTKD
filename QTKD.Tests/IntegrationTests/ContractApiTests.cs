@@ -25,7 +25,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC03_UpdateContract_WhenDraft_Returns200Ok()
     {
-        // Arrange: Tạo hợp đồng Draft
+        // Tạo hợp đồng Draft
         var contractNo = "HD-TEST-TC03-" + Guid.NewGuid().ToString("N")[..6];
         var createResponse = await _client.PostAsJsonAsync("/api/contracts", new CreateContractDto
         {
@@ -38,7 +38,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
         createResponse.StatusCode.Should().Be(HttpStatusCode.Created);
         var created = await createResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
 
-        // Act: Cập nhật hợp đồng ở trạng thái Draft
+        // Cập nhật hợp đồng ở trạng thái Draft
         var updateResponse = await _client.PutAsJsonAsync($"/api/contracts/{created!.Id}", new UpdateContractDto
         {
             CustomerId = 1,
@@ -47,7 +47,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
             Description = "Đã cập nhật gia hạn thời hạn"
         });
 
-        // Assert: HTTP 200 OK và dữ liệu được cập nhật thành công
+        // HTTP 200 OK và dữ liệu được cập nhật thành công
         updateResponse.StatusCode.Should().Be(HttpStatusCode.OK);
         var updated = await updateResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
         updated.Should().NotBeNull();
@@ -58,7 +58,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC04_UpdateContract_WhenPendingApproval_Returns400BadRequest()
     {
-        // Arrange: Tìm hoặc tạo hợp đồng và chuyển sang PendingApproval
+        // Tìm hoặc tạo hợp đồng và chuyển sang PendingApproval
         var contractNo = "HD-TEST-TC04-" + Guid.NewGuid().ToString("N")[..6];
         var createResponse = await _client.PostAsJsonAsync("/api/contracts", new CreateContractDto
         {
@@ -74,7 +74,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
         var submitResponse = await _client.PostAsync($"/api/contracts/{created!.Id}/submit", null);
         submitResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-        // Act: Thử sửa hợp đồng khi đang ở PendingApproval (Vi phạm CTR-01)
+        // Thử sửa hợp đồng khi đang ở PendingApproval
         var updateResponse = await _client.PutAsJsonAsync($"/api/contracts/{created.Id}", new UpdateContractDto
         {
             CustomerId = 1,
@@ -83,12 +83,12 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
             Description = "Cố tình sửa đổi hợp đồng đang chờ duyệt"
         });
 
-        // Assert: Bị từ chối với HTTP 400 Bad Request
+        // Bị từ chối với HTTP 400 Bad Request
         updateResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         var errorJson = await updateResponse.Content.ReadAsStringAsync();
         errorJson.Should().Contain("Draft");
 
-        // Đọc lại từ API để kiểm tra dữ liệu trong DB KHÔNG bị thay đổi (Yêu cầu 17)
+        // Đọc lại từ API để kiểm tra dữ liệu trong DB KHÔNG bị thay đổi
         var getResponse = await _client.GetAsync($"/api/contracts/{created.Id}");
         var currentContract = await getResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
         currentContract!.Status.Should().Be(ContractStatus.PendingApproval);
@@ -102,7 +102,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC05_SubmitContract_WhenMissingDescription_Returns400BadRequest()
     {
-        // Arrange: Tạo hợp đồng nháp nhưng thiếu Description (Vi phạm CTR-02)
+        // Tạo hợp đồng nháp nhưng thiếu Description
         var contractNo = "HD-TEST-TC05-" + Guid.NewGuid().ToString("N")[..6];
         var createResponse = await _client.PostAsJsonAsync("/api/contracts", new CreateContractDto
         {
@@ -114,15 +114,15 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
         });
         var created = await createResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
 
-        // Act: Thử gửi trình duyệt khi thiếu nội dung bắt buộc
+        // Thử gửi trình duyệt khi thiếu nội dung bắt buộc
         var submitResponse = await _client.PostAsync($"/api/contracts/{created!.Id}/submit", null);
 
-        // Assert: Bị từ chối với HTTP 400 Bad Request
+        // Bị từ chối với HTTP 400 Bad Request
         submitResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         var error = await submitResponse.Content.ReadAsStringAsync();
         error.Should().ContainAny("CTR-02", "bắt buộc");
 
-        // Kiểm tra trong DB: Hợp đồng vẫn giữ nguyên trạng thái Draft (AC03)
+        // Kiểm tra trong DB: Hợp đồng vẫn giữ nguyên trạng thái Draft
         var getResponse = await _client.GetAsync($"/api/contracts/{created.Id}");
         var contractInDb = await getResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
         contractInDb!.Status.Should().Be(ContractStatus.Draft);
@@ -131,7 +131,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC06_SubmitContract_WhenValid_Returns200OkAndStatusIsPendingApproval()
     {
-        // Arrange: Hợp đồng hợp lệ đáp ứng đầy đủ CTR-02
+        // Hợp đồng hợp lệ đáp ứng đầy đủ CTR-02
         var contractNo = "HD-TEST-TC06-" + Guid.NewGuid().ToString("N")[..6];
         var createResponse = await _client.PostAsJsonAsync("/api/contracts", new CreateContractDto
         {
@@ -143,17 +143,17 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
         });
         var created = await createResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
 
-        // Act: Gửi trình duyệt
+        // Gửi trình duyệt
         var submitResponse = await _client.PostAsync($"/api/contracts/{created!.Id}/submit", null);
 
-        // Assert: Trả về HTTP 200 OK
+        // Trả về HTTP 200 OK
         submitResponse.StatusCode.Should().Be(HttpStatusCode.OK);
         var submitResult = await submitResponse.Content.ReadFromJsonAsync<SubmitContractResponseDto>();
         submitResult.Should().NotBeNull();
         submitResult!.PreviousStatus.Should().Be(ContractStatus.Draft);
         submitResult.CurrentStatus.Should().Be(ContractStatus.PendingApproval);
 
-        // Kiểm tra đọc lại từ DB (Yêu cầu 17): Đã chuyển sang PendingApproval, không chuyển thẳng sang Approved (CTR-03)
+        // Chuyển sang PendingApproval, không chuyển thẳng sang Approved
         var getResponse = await _client.GetAsync($"/api/contracts/{created.Id}");
         var contractInDb = await getResponse.Content.ReadFromJsonAsync<ContractResponseDto>();
         contractInDb!.Status.Should().Be(ContractStatus.PendingApproval);
@@ -167,7 +167,7 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC08_SubmitContract_WhenAlreadyPendingApproval_Returns400BadRequest()
     {
-        // Arrange: Tạo hợp đồng và submit lần 1 thành công
+        // Tạo hợp đồng và submit lần 1 thành công
         var contractNo = "HD-TEST-TC08-" + Guid.NewGuid().ToString("N")[..6];
         var createResponse = await _client.PostAsJsonAsync("/api/contracts", new CreateContractDto
         {
@@ -182,10 +182,10 @@ public class ContractApiTests : IClassFixture<CustomWebApplicationFactory>
         var firstSubmit = await _client.PostAsync($"/api/contracts/{created!.Id}/submit", null);
         firstSubmit.StatusCode.Should().Be(HttpStatusCode.OK);
 
-        // Act: Thử submit lần 2 đối với cùng một hợp đồng (AC05)
+        // Thử submit lần 2 đối với cùng một hợp đồng (AC05)
         var secondSubmit = await _client.PostAsync($"/api/contracts/{created.Id}/submit", null);
 
-        // Assert: Bị từ chối với HTTP 400 Bad Request, không tạo phiên xử lý trùng
+        // Bị từ chối với HTTP 400 Bad Request, không tạo phiên xử lý trùng
         secondSubmit.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         var errorContent = await secondSubmit.Content.ReadAsStringAsync();
         errorContent.Should().ContainAny("Chờ phê duyệt", "PendingApproval", "BUSINESS_RULE_VIOLATION");

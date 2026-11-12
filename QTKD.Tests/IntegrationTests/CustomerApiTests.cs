@@ -24,16 +24,15 @@ public class CustomerApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC01_CreateCustomer_WithValidData_Returns201AndPersistsInDatabase()
     {
-        // Arrange
         var requestDto = new CreateCustomerDTO
         {
             Name = "Công ty TNHH Hải Đăng Tech"
         };
 
-        // Act: 1. Gọi API POST tạo khách hàng
+        // Gọi API POST tạo khách hàng
         var postResponse = await _client.PostAsJsonAsync("/api/customers", requestDto);
 
-        // Assert 1: Kiểm tra HTTP status code là 201 Created
+        // Kiểm tra HTTP status code là 201 Created
         postResponse.StatusCode.Should().Be(HttpStatusCode.Created);
 
         var createdCustomer = await postResponse.Content.ReadFromJsonAsync<CustomerDto>();
@@ -42,7 +41,7 @@ public class CustomerApiTests : IClassFixture<CustomWebApplicationFactory>
         createdCustomer.Name.Should().Be("Công ty TNHH Hải Đăng Tech");
         createdCustomer.Status.Should().Be("Active");
 
-        // Act 2: Gọi API GET đọc lại từ Database để kiểm tra tính toàn vẹn (Yêu cầu 17: không chỉ check 200)
+        // Gọi API GET đọc lại từ Database để kiểm tra tính toàn vẹn
         var getResponse = await _client.GetAsync($"/api/customers/{createdCustomer.Id}");
         getResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
@@ -52,7 +51,7 @@ public class CustomerApiTests : IClassFixture<CustomWebApplicationFactory>
         readBackCustomer.Name.Should().Be("Công ty TNHH Hải Đăng Tech");
         readBackCustomer.Status.Should().Be("Active");
 
-        // Assert 3: Kiểm tra trực tiếp trong DbContext của Test
+        // Kiểm tra trực tiếp trong DbContext của Test
         using var scope = _factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<QtkdDbContext>();
         var dbCustomer = await db.Customers.FindAsync(createdCustomer.Id);
@@ -67,16 +66,14 @@ public class CustomerApiTests : IClassFixture<CustomWebApplicationFactory>
     [Fact]
     public async Task TC02_CreateCustomer_WithMissingName_Returns400BadRequest()
     {
-        // Arrange: Tên khách hàng để rỗng
+        // Tên khách hàng NULL
         var requestDto = new CreateCustomerDTO
         {
             Name = ""
         };
-
-        // Act
         var response = await _client.PostAsJsonAsync("/api/customers", requestDto);
 
-        // Assert: Bị từ chối với HTTP 400 Bad Request
+        // Bị từ chối với HTTP 400 Bad Request
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
         var errorContent = await response.Content.ReadAsStringAsync();

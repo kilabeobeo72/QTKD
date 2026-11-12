@@ -3,8 +3,6 @@
 - **GitHub Repository**: [https://github.com/kilabeobeo72/QTKD](https://github.com/kilabeobeo72/QTKD)
 - **Sinh viên thực hiện**: Đào Trung Kiên
 - **MSSV**: 23120055
-- **Nền tảng công nghệ**: ASP.NET Core Web API (.NET 10.0), Entity Framework Core, PostgreSQL
-
 ---
 
 ## 1. Sơ đồ kiến trúc giải pháp
@@ -137,7 +135,7 @@ Khi khởi động ứng dụng, hệ thống tự động khởi tạo dữ li�
 
 ---
 
-## 6. Hướng dẫn chạy dự án & Quy trình Demo cuối
+## 6. Hướng dẫn chạy dự án
 
 ### Quy trình trọn vẹn: Clone → Cấu hình → Migration → Chạy API → Chạy Test
 
@@ -162,7 +160,7 @@ dotnet test --logger "trx;LogFileName=TestResults.trx"
 
 ---
 
-## 7. Tuần 07 — Báo cáo Kết quả Kiểm thử Hệ thống (TC01 – TC08)
+## 7. Báo cáo Kết quả Kiểm thử Hệ thống (TC01 – TC08)
 
 ### 7.1. Kiến trúc & Chiến lược Kiểm thử
 Hệ thống kiểm thử được tổ chức trong project riêng `QTKD.Tests` (xUnit, FluentAssertions, Moq, Microsoft.AspNetCore.Mvc.Testing):
@@ -190,11 +188,7 @@ Hệ thống kiểm thử được tổ chức trong project riêng `QTKD.Tests`
 
 ---
 
-### 7.3. Minh chứng Kiểm thử & Kết quả Thực thi
-
-File kết quả kiểm thử tiêu chuẩn TRX nộp bài được lưu trữ tại:
-- [`docs/minh_chung/TestResults.trx`](file:///D:/source/docs/minh_chung/TestResults.trx) (Minh chứng nộp bài)
-- [`QTKD.Tests/TestResults/TestResults.trx`](file:///D:/source/QTKD.Tests/TestResults/TestResults.trx) (Sinh tự động sau khi chạy lệnh `dotnet test`)
+### 7.3. Kiểm thử
 
 **Console Output khi chạy `dotnet test`**:
 ```text
@@ -209,24 +203,3 @@ Passed!  - Failed:     0, Passed:    25, Skipped:     0, Total:    25, Duration:
 ```
 
 ---
-
-### 7.4. Báo cáo Lỗi Phát hiện và Giải pháp Khắc phục (Bug Report & Fixes)
-
-Trong quá trình thực hiện kiểm thử tự động Tuần 07, hệ thống đã phát hiện và xử lý triệt để 3 lỗi kỹ thuật quan trọng:
-
-#### Lỗi 1: Xung đột Assembly Version giữa Project API và Project Test (CS1705)
-- **Cách tái hiện**: Khi cài đặt `Microsoft.EntityFrameworkCore.InMemory (10.0.0)` vào `QTKD.Tests`, lệnh build ném lỗi:
-  `CSC : error CS1705: Assembly 'QTKD.Api' uses 'Microsoft.EntityFrameworkCore, Version=10.0.14.0' which has a higher version than referenced assembly Version=10.0.4.0`.
-- **Nguyên nhân**: `QTKD.Api` sử dụng EF Core Tools bản `10.0.14`, trong khi `QTKD.Tests` ban đầu kéo bản phụ thuộc `10.0.4`.
-- **Cách khắc phục**: Cập nhật file [`QTKD.Tests.csproj`](file:///D:/source/QTKD.Tests/QTKD.Tests.csproj), cấu hình đồng bộ phiên bản `10.0.14` cho toàn bộ các gói `Microsoft.EntityFrameworkCore`, `Microsoft.EntityFrameworkCore.InMemory`, `Microsoft.EntityFrameworkCore.Relational`.
-
-#### Lỗi 2: Xung đột Multi-Provider (PostgreSQL vs InMemory) trong Dependency Injection
-- **Cách tái hiện**: Khi chạy Integration Test qua `CustomWebApplicationFactory`, phương thức `EnsureCreated()` ném ngoại lệ:
-  `InvalidOperationException: Services for database providers 'Npgsql.EntityFrameworkCore.PostgreSQL', 'Microsoft.EntityFrameworkCore.InMemory' have been registered in the service provider. Only a single database provider can be registered...`
-- **Nguyên nhân**: Khi khởi động Web Host nội bộ, `Program.cs` đã đăng ký Npgsql Provider vào ServiceCollection. Khi `CustomWebApplicationFactory` gọi tiếp `UseInMemoryDatabase`, cả hai provider cùng tồn tại trong DI.
-- **Cách khắc phục**: Trong [`CustomWebApplicationFactory.cs`](file:///D:/source/QTKD.Tests/IntegrationTests/CustomWebApplicationFactory.cs), thực hiện quét và gỡ bỏ triệt để tất cả các Service Descriptor thuộc namespace `Npgsql` và `Microsoft.EntityFrameworkCore` trước khi đăng ký `UseInMemoryDatabase`.
-
-#### Lỗi 3: Ký tự Tiếng Việt bị mã hóa dạng Unicode Escape `\uXXXX` trong phản hồi JSON
-- **Cách tái hiện**: Kiểm tra chuỗi thông báo lỗi trả về từ `ExceptionHandlingMiddleware` bằng `ReadAsStringAsync()`, thông điệp tiếng Việt bị chuyển thành `H\u1EE3p \u0111\u1ED3ng \u0111\u00E3 \u1EDF tr\u1EA1ng th\u00E1i...`.
-- **Nguyên nhân**: Mặc định bộ serialize của `System.Text.Json` áp dụng chuẩn mã hóa ASCII, chuyển đổi tất cả các ký tự nằm ngoài bảng chữ cái cơ bản sang escape sequence.
-- **Cách khắc phục**: Cập nhật [`ExceptionHandlingMiddleware.cs`](file:///D:/source/QTKD.Api/Middleware/ExceptionHandlingMiddleware.cs), bổ sung `Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)` vào `JsonSerializerOptions`. Phản hồi trả về đúng chuẩn UTF-8 tự nhiên, hiển thị trực quan trên mọi giao diện Swagger, Postman và Test assertion.

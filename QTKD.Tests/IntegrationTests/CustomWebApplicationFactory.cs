@@ -9,7 +9,7 @@ namespace QTKD.Tests.IntegrationTests;
 /// <summary>
 /// WebApplicationFactory tùy biến cho Integration Test:
 /// Thay thế PostgreSQL thật bằng InMemory Database riêng biệt cho môi trường kiểm thử.
-/// Thỏa mãn yêu cầu 16: "Dùng database kiểm thử riêng, không dùng database có dữ liệu quan trọng."
+/// Dùng database kiểm thử riêng, không dùng database có dữ liệu quan trọng.
 /// </summary>
 public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
@@ -21,7 +21,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
         builder.ConfigureServices(services =>
         {
-            // 1. Gỡ bỏ tất cả đăng ký liên quan đến DbContext và provider cũ (PostgreSQL / Npgsql)
+            // Gỡ bỏ tất cả đăng ký liên quan đến DbContext và provider cũ
             var descriptorsToRemove = services.Where(d =>
                 d.ServiceType == typeof(DbContextOptions<QtkdDbContext>) ||
                 d.ServiceType == typeof(DbContextOptions) ||
@@ -37,7 +37,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                 services.Remove(descriptor);
             }
 
-            // 2. Đăng ký DbContext mới dùng InMemory Database riêng biệt cho test
+            // Đăng ký DbContext mới dùng InMemory Database riêng biệt cho test
             services.AddDbContext<QtkdDbContext>(options =>
             {
                 options.UseInMemoryDatabase(_databaseName);

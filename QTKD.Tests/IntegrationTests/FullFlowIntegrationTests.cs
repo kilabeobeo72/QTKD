@@ -27,9 +27,7 @@ public class FullFlowIntegrationTests : IClassFixture<CustomWebApplicationFactor
     [Fact]
     public async Task FullDemoFlow_FromCustomerToContractSubmit_ShouldSucceedAllSteps()
     {
-        // --------------------------------------------------------------------
         // BƯỚC 1: Tạo Khách hàng mới (POST /api/customers)
-        // --------------------------------------------------------------------
         var customerName = "Công ty Cổ phần Alpha Global " + Guid.NewGuid().ToString("N")[..6];
         var createCustomerResponse = await _client.PostAsJsonAsync("/api/customers", new CreateCustomerDTO
         {
@@ -41,9 +39,7 @@ public class FullFlowIntegrationTests : IClassFixture<CustomWebApplicationFactor
         customer!.Id.Should().BeGreaterThan(0);
         customer.Status.Should().Be("Active");
 
-        // --------------------------------------------------------------------
         // BƯỚC 2: Lập hợp đồng nháp nhưng THIẾU mô tả (POST /api/contracts)
-        // --------------------------------------------------------------------
         var contractNo = "HD-FLOW-" + Guid.NewGuid().ToString("N")[..6];
         var createContractResponse = await _client.PostAsJsonAsync("/api/contracts", new CreateContractDto
         {
@@ -58,20 +54,15 @@ public class FullFlowIntegrationTests : IClassFixture<CustomWebApplicationFactor
         contract.Should().NotBeNull();
         contract!.Status.Should().Be(ContractStatus.Draft);
 
-        // --------------------------------------------------------------------
         // BƯỚC 3: Gửi duyệt khi thiếu dữ liệu -> THẤT BẠI (CTR-02 / AC03)
-        // --------------------------------------------------------------------
         var failedSubmitResponse = await _client.PostAsync($"/api/contracts/{contract.Id}/submit", null);
         failedSubmitResponse.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
-        // Đọc lại từ DB: xác nhận hợp đồng vẫn là Draft
         var getContractCheck = await _client.GetAsync($"/api/contracts/{contract.Id}");
         var contractStillDraft = await getContractCheck.Content.ReadFromJsonAsync<ContractResponseDto>();
         contractStillDraft!.Status.Should().Be(ContractStatus.Draft);
 
-        // --------------------------------------------------------------------
-        // BƯỚC 4: Bổ sung dữ liệu hợp đồng (PUT /api/contracts/{id})
-        // --------------------------------------------------------------------
+        // BƯỚC 4: Bổ sung dữ liệu hợp đồng
         var updateResponse = await _client.PutAsJsonAsync($"/api/contracts/{contract.Id}", new UpdateContractDto
         {
             CustomerId = customer.Id,
@@ -81,9 +72,7 @@ public class FullFlowIntegrationTests : IClassFixture<CustomWebApplicationFactor
         });
         updateResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-        // --------------------------------------------------------------------
         // BƯỚC 5: Gửi duyệt lại -> THÀNH CÔNG (CTR-02, CTR-03, AC04)
-        // --------------------------------------------------------------------
         var successSubmitResponse = await _client.PostAsync($"/api/contracts/{contract.Id}/submit", null);
         successSubmitResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
@@ -92,9 +81,7 @@ public class FullFlowIntegrationTests : IClassFixture<CustomWebApplicationFactor
         submitResult!.PreviousStatus.Should().Be(ContractStatus.Draft);
         submitResult.CurrentStatus.Should().Be(ContractStatus.PendingApproval);
 
-        // --------------------------------------------------------------------
-        // BƯỚC 6: Kiểm tra trực tiếp Database (Yêu cầu 17 & 18)
-        // --------------------------------------------------------------------
+        // BƯỚC 6: Kiểm tra trực tiếp Database
         using var scope = _factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<QtkdDbContext>();
         var dbContract = await db.Contracts.FindAsync(contract.Id);

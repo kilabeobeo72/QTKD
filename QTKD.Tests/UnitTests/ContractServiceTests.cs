@@ -9,8 +9,7 @@ using Xunit;
 namespace QTKD.Tests.UnitTests;
 
 /// <summary>
-/// Unit Tests kiểm tra các quy tắc nghiệp vụ cốt lõi:
-/// CTR-01, CTR-02, CTR-03 và US03 (AC01 - AC05) trong ContractService.
+/// Unit Tests kiểm tra các quy tắc nghiệp vụ cốt lõi
 /// </summary>
 public class ContractServiceTests
 {
@@ -30,7 +29,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC03_UpdateContract_WhenStatusIsDraft_ShouldSucceed()
     {
-        // Arrange: Hợp đồng ở trạng thái Draft
+        // Hợp đồng ở trạng thái Draft
         var contract = new Contract
         {
             Id = 1,
@@ -56,10 +55,9 @@ public class ContractServiceTests
         _customerRepoMock.Setup(r => r.GetByIdAsync(1, It.IsAny<CancellationToken>()))
             .ReturnsAsync(customer);
 
-        // Act
         var result = await _contractService.UpdateContractAsync(1, updateDto);
 
-        // Assert: Thỏa mãn CTR-01, cập nhật thành công
+        // Thỏa mãn CTR-01, cập nhật thành công
         result.Should().NotBeNull();
         result.EndDate.Should().Be(new DateOnly(2027, 12, 31));
         result.Description.Should().Be("Cập nhật thời hạn hợp đồng");
@@ -69,7 +67,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC03_UpdateContract_WhenStatusIsRevisionRequested_ShouldSucceed()
     {
-        // Arrange: Hợp đồng ở trạng thái RevisionRequested (cũng được phép sửa theo CTR-01)
+        // Hợp đồng ở trạng thái RevisionRequested
         var contract = new Contract
         {
             Id = 2,
@@ -133,7 +131,7 @@ public class ContractServiceTests
         // Act
         Func<Task> act = async () => await _contractService.UpdateContractAsync(3, updateDto);
 
-        // Assert: Bị từ chối theo CTR-01, dữ liệu giữ nguyên không SaveChanges
+        // Bị từ chối theo CTR-01, dữ liệu giữ nguyên không SaveChanges
         await act.Should().ThrowAsync<InvalidOperationException>()
             .WithMessage("*Draft*RevisionRequested*");
         _contractRepoMock.Verify(r => r.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Never);
@@ -146,7 +144,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC05_SubmitContract_WhenDescriptionIsEmpty_ShouldBeRejectedAndRemainDraft()
     {
-        // Arrange: Hợp đồng Draft nhưng thiếu Description (Vi phạm CTR-02)
+        // Hợp đồng Draft nhưng thiếu Description (Vi phạm CTR-02)
         var contract = new Contract
         {
             Id = 4,
@@ -165,7 +163,7 @@ public class ContractServiceTests
         // Act
         Func<Task> act = async () => await _contractService.SubmitContractAsync(4);
 
-        // Assert: Bị từ chối theo CTR-02 / AC03, trạng thái vẫn là Draft
+        // Bị từ chối theo CTR-02 / AC03, trạng thái vẫn là Draft
         await act.Should().ThrowAsync<InvalidOperationException>()
             .WithMessage("*CTR-02*");
         contract.Status.Should().Be(ContractStatus.Draft);
@@ -175,7 +173,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC05_SubmitContract_WhenCustomerIsInactive_ShouldBeRejected()
     {
-        // Arrange: Khách hàng đang Inactive (Vi phạm CTR-02)
+        // Khách hàng đang Inactive (Vi phạm CTR-02)
         var contract = new Contract
         {
             Id = 5,
@@ -194,7 +192,7 @@ public class ContractServiceTests
         // Act
         Func<Task> act = async () => await _contractService.SubmitContractAsync(5);
 
-        // Assert: Bị từ chối theo CTR-02, không thay đổi hợp đồng
+        // Bị từ chối theo CTR-02, không thay đổi hợp đồng
         await act.Should().ThrowAsync<InvalidOperationException>()
             .WithMessage("*CTR-02*");
         contract.Status.Should().Be(ContractStatus.Draft);
@@ -204,7 +202,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC06_SubmitContract_WhenValid_ShouldTransitionToPendingApproval()
     {
-        // Arrange: Hợp đồng Draft thỏa mãn toàn bộ điều kiện CTR-02
+        // Hợp đồng Draft thỏa mãn toàn bộ điều kiện CTR-02
         var contract = new Contract
         {
             Id = 6,
@@ -223,7 +221,7 @@ public class ContractServiceTests
         // Act
         var result = await _contractService.SubmitContractAsync(6);
 
-        // Assert: Chuyển sang PendingApproval theo CTR-02, CTR-03, AC04
+        // Chuyển sang PendingApproval theo CTR-02, CTR-03, AC04
         result.Should().NotBeNull();
         result.PreviousStatus.Should().Be(ContractStatus.Draft);
         result.CurrentStatus.Should().Be(ContractStatus.PendingApproval);
@@ -238,8 +236,7 @@ public class ContractServiceTests
     [Fact]
     public void TC07_DraftToApproved_DirectTransition_IsDisallowedByDesign()
     {
-        // CTR-03 quy định: Submit hợp đồng CHỈ chuyển sang PendingApproval,
-        // không bao giờ được phép nhảy thẳng từ Draft sang Approved.
+        // CTR-03 quy định: Submit hợp đồng CHỈ chuyển sang PendingApproval
         var contract = new Contract
         {
             Id = 7,
@@ -247,7 +244,7 @@ public class ContractServiceTests
             Status = ContractStatus.Draft
         };
 
-        // Assert: Trong quy trình nghiệp vụ submit, kết quả đích chỉ là PendingApproval
+        // Trong quy trình nghiệp vụ submit, đích chỉ là PendingApproval
         var allowedTargetStatuses = new[] { ContractStatus.PendingApproval };
         allowedTargetStatuses.Should().NotContain(ContractStatus.Approved);
         contract.Status.Should().NotBe(ContractStatus.Approved);
@@ -260,7 +257,7 @@ public class ContractServiceTests
     [Fact]
     public async Task TC08_SubmitContract_WhenAlreadyPendingApproval_ShouldThrowException()
     {
-        // Arrange: Hợp đồng đã ở trạng thái PendingApproval
+        // Hợp đồng đã ở trạng thái PendingApproval
         var contract = new Contract
         {
             Id = 8,
@@ -276,10 +273,10 @@ public class ContractServiceTests
         _contractRepoMock.Setup(r => r.GetByIdForUpdateAsync(8, It.IsAny<CancellationToken>()))
             .ReturnsAsync(contract);
 
-        // Act: Thử gửi duyệt lại lần 2
+        // Thử gửi duyệt lại lần 2
         Func<Task> act = async () => await _contractService.SubmitContractAsync(8);
 
-        // Assert: Thỏa mãn AC05: Không tạo thêm một lần xử lý tương đương, bị từ chối
+        // Thỏa mãn AC05: Không tạo thêm một lần xử lý tương đương, bị từ chối
         await act.Should().ThrowAsync<InvalidOperationException>()
             .WithMessage("*Chờ phê duyệt*");
         _contractRepoMock.Verify(r => r.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Never);
